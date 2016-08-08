@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Vuex from 'vuex'
 var VueResource = require('vue-resource')
 // import App from './App'
 import VueRouter from 'vue-router'
@@ -8,6 +9,7 @@ import homepage from './components/homepage'
 import currency from './components/currency'
 Vue.use(VueRouter)
 Vue.use(VueResource)
+Vue.use(Vuex)
 var router = new VueRouter()
 
 router.map({

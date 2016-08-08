@@ -1,13 +1,28 @@
 <template lang="html">
 <h1 class="title">Currency</h1>
- AUD : {{data.AUD}}
+ {{getState.rates.JPY}}
+ <br>
+ <button type="button" @click="add(1)">+1</button> {{getNum}}
 </template>
 
 <script>
+import store from './../vuex/store.js'
+import { getApi, add } from './../vuex/actions.js'
+import { getState, getNum } from './../vuex/getters.js'
 export default {
+  store,
+  vuex: {
+    actions: {
+      getApi: getApi,
+      add: add
+    },
+    getters: {
+      getState: getState,
+      getNum: getNum
+    }
+  },
   data: function () {
     return {
-      data: {}
     }
   },
   computed: {},
@@ -16,12 +31,8 @@ export default {
   }, // init function
   attached: function () {},
   methods: {
-    getApi: function () {
-      this.$http.get('http://api.fixer.io/latest').then(function (res) {
-        console.log(res.data)
-        this.data = res.data.rates
-        console.log(this.data, 'this data')
-      })
+    add: function (num) {
+      this.add(num)
     }
   },
   components: {}
